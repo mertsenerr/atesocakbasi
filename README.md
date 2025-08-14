@@ -1,4 +1,4 @@
-# 🔥 Ateş Ocakbaşı — Rezervasyon, Masa Yönetimi ve Menü Sistemi
+# 🔥 Ateş Ocakbaşı - Rezervasyon, Masa Yönetimi ve Menü Sistemi
 
 ![HTML5](https://img.shields.io/badge/HTML5-0a0f1f?style=for-the-badge&logo=html5)
 ![React](https://img.shields.io/badge/React-0A0F1F?style=for-the-badge&logo=react)
