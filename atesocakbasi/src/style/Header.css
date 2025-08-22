@@ -1,0 +1,780 @@
+/* Modern Header Stilleri - Ateş Ocakbaşı */
+.header {
+  background: linear-gradient(135deg, #000000, #1a1a1a, #110101);
+  color: white;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  height: 130px;
+  overflow: visible;
+}
+
+.header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  height: 100%;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  height: 100%;
+  position: relative;
+}
+
+/* Logo Stilleri */
+.logo {
+  cursor: pointer;
+  position: relative;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.logo-image {
+  margin-top: 10px;
+  height: 230px;
+  width: auto;
+  object-fit: contain;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+}
+
+/* Desktop Navigation */
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  flex: 1;
+  justify-content: center;
+  margin-right: 30px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 25px;
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 0;
+  transition: all 0.15s ease;
+  font-size: 0.87rem;
+  font-family: 'Campton';
+  white-space: nowrap;
+  position: relative;
+  text-decoration: none;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+/* Dropdown Trigger */
+.dropdown-trigger {
+  gap: 5px;
+}
+
+.dropdown-arrow {
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-left: 4px;
+}
+
+.dropdown-arrow.open {
+  transform: rotate(180deg);
+}
+
+/* Hover Alt Çizgi Efekti */
+.nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #fbbf24;
+  transition: width 0.15s ease;
+}
+
+.nav-item:hover::after {
+  width: 100%;
+}
+
+.nav-item:hover {
+  color: #fbbf24;
+  background: none;
+  transform: none;
+}
+
+.nav-item.active {
+  color: #fbbf24;
+  background: none;
+}
+
+.nav-item.active::after {
+  width: 100%;
+  background: #fbbf24;
+}
+
+.nav-item span {
+  position: relative;
+  z-index: 2;
+}
+
+/* Dropdown Stilleri - SCROLL BAR FIX & YAVAS ANIMASYON */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: fixed;
+  top: 120px;
+  left: 0;
+  width: 100vw;
+  max-width: 100vw;
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #0a0a0a 100%);
+  border-top: 2px solid #fbbf24;
+  box-shadow: 
+    0 8px 32px rgba(0,0,0,0.6),
+    0 0 0 1px rgba(251,191,36,0.1),
+    inset 0 1px 0 rgba(251,191,36,0.1);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px) scaleY(0.8);
+  transform-origin: top center;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 999;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(251,191,36,0.2);
+  overflow: hidden;
+  max-height: 0;
+  contain: layout;
+}
+
+.dropdown-menu.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scaleY(1);
+  max-height: 200px;
+}
+
+.dropdown-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80px;
+  transform: translateY(15px);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+  background: transparent !important;
+}
+
+.dropdown-menu.open .dropdown-content {
+  transform: translateY(0);
+}
+
+.dropdown-content::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 52.5%;
+  transform: translateX(-50%) scaleX(0);
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #fbbf24, transparent);
+  opacity: 0.8;
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+}
+
+.dropdown-menu.open .dropdown-content::before {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.dropdown-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: transparent !important;
+}
+
+.dropdown-section ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  background: transparent !important;
+}
+
+.dropdown-section li {
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  background: transparent !important;
+}
+
+.dropdown-menu.open .dropdown-section li {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger effect - her element sırayla canlanır */
+.dropdown-menu.open .dropdown-section li:nth-child(1) {
+  transition-delay: 0.4s;
+}
+
+.dropdown-menu.open .dropdown-section li:nth-child(2) {
+  transition-delay: 0.5s;
+}
+
+.dropdown-menu.open .dropdown-section li:nth-child(3) {
+  transition-delay: 0.6s;
+}
+
+.dropdown-menu.open .dropdown-section li:nth-child(4) {
+  transition-delay: 0.7s;
+}
+
+.dropdown-section li:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%) scaleY(0);
+  width: 1px;
+  height: 20px;
+  background: linear-gradient(to bottom, transparent, rgba(251,191,36,0.3), transparent);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.8s;
+}
+
+.dropdown-menu.open .dropdown-section li:not(:last-child)::after {
+  transform: translateY(-50%) scaleY(1);
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  background: none;
+  border: none;
+  color: #d4af37;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 0.85rem;
+  text-align: center;
+  font-family: 'Campton';
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 500;
+  text-decoration: none;
+  position: relative;
+  overflow: visible;
+  white-space: nowrap;
+}
+
+/* Dropdown item alt çizgi animasyonu - Header'daki gibi */
+.dropdown-item::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #fbbf24;
+  transition: width 0.3s ease;
+}
+
+.dropdown-item:hover::before {
+  left: 50%;
+}
+
+.dropdown-item:hover::after {
+  width: 100%;
+}
+
+.dropdown-item.active::after {
+  width: 100%;
+  background: #fbbf24;
+}
+
+/* Scroll bar gizleme */
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+/* Contact Info */
+.contact-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: #d1d5db;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  font-family: 'Campton';
+  letter-spacing: 0.5px;
+}
+
+.contact-info:hover {
+  background: rgba(255,255,255,0.1);
+  color: #fbbf24;
+  transform: translateY(-1px);
+}
+
+.contact-text {
+  font-weight: 600;
+}
+
+/* Mobile Menu Button */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-btn:hover {
+  background: rgba(255,255,255,0.1);
+  color: #fbbf24;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, #000000, #1a1a1a);
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-12px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  max-height: 0;
+  overflow: hidden;
+}
+
+.mobile-menu.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  max-height: 70vh;
+}
+
+.mobile-menu-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mobile-nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  color: #d1d5db;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: left;
+  width: 100%;
+  border: 1px solid transparent;
+  font-family: 'Campton';;
+  text-transform: uppercase;
+}
+
+.mobile-nav-item:hover {
+  background: rgba(255,255,255,0.08);
+  color: white;
+  border-color: rgba(251,191,36,0.3);
+  transform: translateX(4px);
+}
+
+.mobile-nav-item.active {
+  background: rgba(251,191,36,0.15);
+  color: #fbbf24;
+  border-color: #fbbf24;
+}
+
+.mobile-menu-section {
+  margin: 0.75rem 0;
+}
+
+.mobile-section-title {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 16px;
+  color: #fbbf24;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-bottom: 1px solid rgba(251,191,36,0.2);
+  margin-bottom: 0.5rem;
+  font-family: 'Campton';
+  text-transform: uppercase;
+}
+
+.mobile-submenu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-left: 0.75rem;
+}
+
+.submenu-item {
+  font-size: 0.9rem;
+  padding: 10px 14px;
+  border-left: 2px solid rgba(255,255,255,0.1);
+}
+
+.submenu-item.active {
+  border-left-color: #fbbf24;
+}
+
+.mobile-contact {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  margin-top: 0.75rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  color: #fbbf24;
+  font-weight: 600;
+  font-family: 'Campton';
+  font-size: 0.9rem;
+}
+
+/* Rezervasyon butonuna özel stiller */
+.nav-item.reservation-btn {
+  position: relative;
+  overflow: visible;
+}
+
+.nav-item.reservation-btn::before {
+  content: '0232 422 1080';
+  position: absolute;
+  top: 50%;
+  left: 160px;
+  transform: translateY(-50%) translateX(-20px);
+  color: #ffffff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  font-weight: 300;
+  white-space: nowrap;
+  opacity: 0;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1001;
+  font-family: 'Campton';
+  letter-spacing: 0.5px;
+}
+
+.nav-item.reservation-btn:hover::before {
+  opacity: 1;
+  transform: translateY(-50%) translateX(8px);
+}
+
+/* Mobile için rezervasyon butonu */
+.mobile-nav-item.reservation-btn {
+  position: relative;
+  overflow: visible;
+}
+
+.mobile-nav-item.reservation-btn::before {
+  content: '0232 422 1080';
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%) translateX(-20px);
+  background: rgba(251, 191, 36, 0.95);
+  color: #000;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1001;
+  font-family: 'SF Mono', monospace;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.mobile-nav-item.reservation-btn:hover::before {
+  opacity: 1;
+  transform: translateY(-50%) translateX(8px);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .header-content {
+    padding: 0 1.5rem;
+  }
+  
+  .desktop-nav {
+    gap: 0.8rem;
+    margin: 0 1.5rem;
+  }
+  
+  .nav-item {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+  
+  .logo-image {
+    height: 120px;
+  }
+  
+  .dropdown-content {
+    padding: 1.5rem;
+  }
+  
+  .dropdown-item {
+    padding: 10px 14px;
+    font-size: 0.8rem;
+  }
+  
+  .dropdown-menu {
+    width: 450px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .header-content {
+    padding: 0 1rem;
+  }
+  
+  .desktop-nav {
+    gap: 0.6rem;
+    margin: 0 1rem;
+  }
+  
+  .nav-item {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+  
+  .logo-image {
+    height: 100px;
+  }
+  
+  .contact-text {
+    display: none;
+  }
+  
+  .dropdown-section ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .dropdown-item {
+    padding: 10px 14px;
+    font-size: 0.8rem;
+  }
+  
+  .dropdown-menu {
+    width: 400px;
+  }
+}
+
+@media (max-width: 900px) {
+  .desktop-nav {
+    gap: 0.8rem;
+  }
+  
+  .nav-item span {
+    display: none;
+  }
+  
+  .nav-item {
+    padding: 6px;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    justify-content: center;
+    font-size: 14px;
+  }
+  
+  .nav-item::after {
+    display: none;
+  }
+  
+  .dropdown-trigger span {
+    display: none;
+  }
+  
+  .logo-image {
+    height: 90px;
+  }
+  
+  .dropdown-menu {
+    width: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .desktop-nav,
+  .contact-info {
+    display: none;
+  }
+  
+  .mobile-menu-btn {
+    display: block;
+  }
+  
+  .header {
+    height: 70px;
+  }
+  
+  .header-content {
+    padding: 0 1rem;
+  }
+  
+  .logo-image {
+    height: 80px;
+  }
+  
+  .dropdown-menu {
+    position: relative;
+    width: 100%;
+    top: 0;
+    left: 0;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    box-shadow: none;
+    background: linear-gradient(135deg, #1a1a1a, #000000);
+    border-top: 1px solid rgba(251,191,36,0.3);
+    max-height: none;
+  }
+  
+  .dropdown-content {
+    padding: 1rem;
+    transform: none;
+  }
+  
+  .dropdown-section ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .dropdown-section li {
+    opacity: 1;
+    transform: none;
+  }
+  
+  .dropdown-section li::after {
+    display: none;
+  }
+  
+  .dropdown-item {
+    padding: 12px 16px;
+    text-align: left;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    height: 60px;
+  }
+  
+  .header-content {
+    padding: 0 0.75rem;
+  }
+  
+  .logo-image {
+    height: 70px;
+  }
+  
+  .mobile-menu-content {
+    padding: 1rem;
+    gap: 0.5rem;
+  }
+  
+  .mobile-nav-item {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+  
+  .dropdown-content {
+    padding: 0.75rem;
+  }
+  
+  .dropdown-item {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+  }
+  
+  .dropdown-menu {
+    width: 300px;
+  }
+}
+
+/* Performance Optimizations */
+.header {
+  will-change: transform;
+}
+
+.mobile-menu {
+  will-change: transform, opacity;
+}
+
+.dropdown-menu {
+  will-change: transform, opacity;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .header *,
+  .mobile-menu *,
+  .dropdown-menu * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
